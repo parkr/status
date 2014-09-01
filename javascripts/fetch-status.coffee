@@ -32,22 +32,19 @@ extractData = (callback) ->
     if @readyState == 4
       callback(JSON.parse(this.responseText))
 
-getRepos = (callback) ->
-  makeXHRRequest("/repos.json", callback)
+fetchAndDisplayStatus = (repo) ->
+  makeXHRRequest("#{baseURL}/#{repo.dataset.nwo}", changeColorToMatchStatus)
 
-fetchAndDisplayStatuses = (repos) ->
-  console.log("Processing repos:", repos)
-  for repo in repos
-    makeXHRRequest("#{baseURL}/#{repo.nwo}", formatStatus)
+fetchAndDisplayStatuses = ->
+  repos = document.getElementsByClassName("repo")
+  fetchAndDisplayStatus(repo) for repo in repos
+  repos
 
-formatStatus = (data) ->
+changeColorToMatchStatus = (data) ->
   console.log(data.repo)
-  addToRepos "${slug}".fill(data.repo)
-
-addToRepos = (el) ->
-  document.getElementsByClassName("repos")[0].innerText += el
+  console.log("#{data.repo.slug} is currently '#{data.repo.last_build_state}'")
+  repoEl = document.getElementById(data.repo.slug.replace("/", "-"))
+  repoEl.dataset.status = data.repo.last_build_state
 
 document.onreadystatechange = ->
-  if @readyState == "complete"
-    getRepos(fetchAndDisplayStatuses)
-
+  fetchAndDisplayStatuses() if @readyState == "complete"

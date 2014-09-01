@@ -3,4 +3,9 @@ layout: default
 ---
 
 <div class="repos">
+    {% for repo in site.data.repos %}
+        <div class="repo colors" data-status="pending" data-nwo="{{ repo }}" id="{{ repo | replace:"/","-" }}">
+            <h4>{{ repo }}</h4>
+        </div>
+    {% endfor %}
 </div>

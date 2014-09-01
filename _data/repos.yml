@@ -1,3 +1,9 @@
 ---
--
-  nwo: jekyll/jekyll
+- jekyll/jekyll
+- jekyll/integration-tests
+- jekyll/jekyll-sass-converter
+- jekyll/jekyll-redirect-from
+- jekyll/jekyll-coffeescript
+- jm/toml
+- parkr/stuff
+- parkr/blogsource
