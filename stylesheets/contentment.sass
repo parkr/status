@@ -3,63 +3,72 @@
 
 body
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  text-align: center
 
 .repos
   width: 80%
   margin: 0 auto
 .repo
   float: left
-
   width: 50%
   height: 200px
   h4
     padding: 10%
     font-size: 150%
-    text-align: center
 
 $raingif: "http://baccalabloggala.files.wordpress.com/2013/03/anigif_enhanced-buzz-4748-1358203605-3.gif"
 $partystarted: "https://spsublogger.files.wordpress.com/2014/06/partystarted3kma.gif"
 
 .gifs[data-status="passed"]
-  color: white
   background: url($partystarted) 100%
+  a
+    color: white
 
 .gifs[data-status="pending"]
-  color: black
   background-color: yellow
+  a
+    color: black
 
 .gifs[data-status="errored"]
-  color: white
   background-color: gray
+  a
+    color: white
 
 .gifs[data-status="failed"]
-  color: white
   background: url($raingif) 100%
+  a
+    color: white
 
 .gifs[data-status="started"]
-  color: white
   background: url($partystarted) 100%
+  a
+    color: white
 
   ////////
 // COLORS
   ////////
 
 .colors[data-status="passed"]
-  color: white
+  a
+    color: white
   background: green
 
 .colors[data-status="pending"]
-  color: black
+  a
+    color: black
   background: yellow
 
 .colors[data-status="errored"]
-  color: white
+  a
+    color: white
   background: gray
 
 .colors[data-status="failed"]
-  color: white
+  a
+    color: white
   background: red
 
 .colors[data-status="started"]
-  color: white
+  a
+    color: white
   background: yellow
