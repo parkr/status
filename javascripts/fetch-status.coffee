@@ -33,18 +33,18 @@ extractData = (callback) ->
       callback(JSON.parse(this.responseText))
 
 fetchAndDisplayStatus = (repo) ->
-  makeXHRRequest("#{baseURL}/#{repo.dataset.nwo}", changeColorToMatchStatus)
+  makeXHRRequest("#{baseURL}/#{repo.dataset.nwo}/branches/#{repo.dataset.branch}", changeColorToMatchStatus(repo.id))
 
 fetchAndDisplayStatuses = ->
   repos = document.getElementsByClassName("repo")
   fetchAndDisplayStatus(repo) for repo in repos
   repos
 
-changeColorToMatchStatus = (data) ->
-  console.log(data.repo)
-  console.log("#{data.repo.slug} is currently '#{data.repo.last_build_state}'")
-  repoEl = document.getElementById(data.repo.slug.replace("/", "-"))
-  repoEl.dataset.status = data.repo.last_build_state
+changeColorToMatchStatus = (id) ->
+  (data) ->
+    console.log(data)
+    repoEl = document.getElementById(id)
+    repoEl.dataset.status = data.branch.state
 
 document.onreadystatechange = ->
   fetchAndDisplayStatuses() if @readyState == "complete"

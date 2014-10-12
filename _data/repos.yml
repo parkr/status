@@ -1,9 +1,11 @@
 ---
-- jekyll/jekyll
-- jekyll/integration-tests
-- jekyll/jekyll-sass-converter
-- jekyll/jekyll-redirect-from
-- jekyll/jekyll-coffeescript
-- jm/toml
-- parkr/stuff
-- parkr/blogsource
+- nwo: jekyll/jekyll
+- nwo: jekyll/integration-tests
+- nwo: jekyll/jekyll-sass-converter
+- nwo: jekyll/jekyll-redirect-from
+- nwo: jekyll/jekyll-coffeescript
+- nwo: jm/toml
+-
+  nwo: parkr/stuff
+  branch: gh-pages
+- nwo: parkr/blogsource
