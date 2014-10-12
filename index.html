@@ -4,8 +4,13 @@ layout: default
 
 <div class="repos">
     {% for repo in site.data.repos %}
-        <div class="repo colors" data-status="pending" data-nwo="{{ repo }}" id="{{ repo | replace:"/","-" }}">
-            <h4><a href="https://travis-ci.org/{{ repo }}">{{ repo }}</h4>
+        <div class="repo colors"
+            data-status="pending"
+            data-nwo="{{ repo.nwo }}"
+            data-branch="{% if repo.branch %}{{ repo.branch }}{% else %}master{% endif %}"
+            id="{{ repo.nwo | replace:"/","-" }}">
+
+            <h4><a href="https://travis-ci.org/{{ repo.nwo }}">{{ repo.nwo }}</h4>
         </div>
     {% endfor %}
 </div>
