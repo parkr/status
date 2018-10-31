@@ -35,12 +35,9 @@ checkup.storage = (function() {
 				if (data.IsTruncated) {
 					getObjectsAfter(data.Contents[data.Contents.length-1].Key);
 				} else {
-					// TODO: Can this be converted to a map() function?
-					var keys = [];
-					for (var i = 0; i < allObjects.length; i++) {
-						if (allObjects[i].Key.indexOf(checkup.checkFileSuffix) != -1)
-							keys.push(allObjects[i].Key);
-					}
+					var keys = allObjects
+					    .map(Obj => Obj.Key)
+					    .filter(Key => Key.indexOf(checkup.checkFileSuffix) != -1);
 					callback(keys);
 				}
 			});
