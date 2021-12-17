@@ -1,0 +1,16 @@
+on: 
+  push:
+    branches: [debug]
+name: pages-build
+jobs:
+  build:
+    name: debug
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: paper-spa/pages@v0.0.2
+      with:
+        source: .
+        destination: ./_site
+        verbose: 1
+        token: ${{ secrets.GITHUB_TOKEN }}
